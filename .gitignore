@@ -1,0 +1,12 @@
+# https://git-scm.com/docs/gitignore
+
+# Anywhere
+**/.DS_Store
+**/__pycache__
+**/node_modules
+
+# Root
+/.idea
+/.mypy_cache
+/.vscode
+/coverage
