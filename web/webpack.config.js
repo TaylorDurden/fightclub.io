@@ -3,18 +3,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const InterpolateHtmlPlugin = require("interpolate-html-plugin");
 
 module.exports = {
+  mode: "development",
   entry: "./src/index.tsx",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true,
+    // clean: true,
   },
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
 
   devServer: {
-    contentBase: "./dist",
+    contentBase: path.resolve(__dirname, "dist"),
   },
 
   resolve: {
@@ -41,11 +42,23 @@ module.exports = {
         loader: "awesome-typescript-loader",
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      // {
+      //   enforce: "pre",
+      //   test: /\.js$/,
+      //   loader: "source-map-loader",
+      // },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //     },
+      //   ],
+      // },
       {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader",
-      },
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg)$/,
+        loader: 'url-loader'
+      }
     ],
   },
 
@@ -57,7 +70,7 @@ module.exports = {
       template: "public/index.html",
     }),
     new InterpolateHtmlPlugin({
-      PUBLIC_URL: "public/", // can modify `static` to another name or get it from `process`
+      PUBLIC_URL: ".", // can modify `static` to another name or get it from `process`
     }),
   ],
 };

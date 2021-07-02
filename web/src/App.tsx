@@ -1,22 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './assets/logo.png';
+import background from './assets/background.jpeg';
 import './App.css';
+
+var backgroundStyle = {
+  background: `url(${background}) no-repeat`,
+  backgroundSize: "100% 100%"
+}
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={backgroundStyle}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <a href="">
+          <img src={logo} className="App-logo" alt="Join in Fight Club" />
+        </a>
         <a
           className="App-link"
-          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          It's only after we've lost everything that we're free to do anything.
         </a>
       </header>
     </div>
